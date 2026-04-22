@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - StoreFlow NG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- NAVBAR - Updated with Home Button -->
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="https://i.imgur.com/JaoDzQ1.png" 
+                 alt="StoreFlow NG Logo" 
+                 class="h-11 w-auto">
+            <span class="hidden sm:block heading-font text-2xl font-semibold text-[#1E3A8A]">StoreFlow NG</span>
+        </a>
+        
+        <div class="hidden md:flex gap-6 text-[#1E3A8A] font-medium">
+            <a href="index.html" class="hover:text-[#3B82F6] transition">Home</a>
+            <a href="services.html" class="hover:text-[#3B82F6] transition">Services</a>
+            <a href="pricing.html" class="hover:text-[#3B82F6] transition">Pricing</a>
+            <a href="how-it-works.html" class="hover:text-[#3B82F6] transition">How it Works</a>
+            <a href="faq.html" class="hover:text-[#3B82F6] transition">FAQ</a>
+        </div>
+        
+        <a href="https://wa.me/234YOURNUMBER?text=Hi%20StoreFlow%20NG%2C%20I%20need%20a%20free%20store%20audit" 
+           target="_blank"
+           class="bg-[#F97316] hover:bg-orange-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition">
+            💬 WhatsApp Us
+        </a>
+    </div>
+</nav>
+    <div class="max-w-7xl mx-auto px-5 py-20">
+        <div class="text-center mb-16 fade-in">
+            <h1 class="heading-font text-5xl md:text-6xl font-bold text-[#1E3A8A]">How It Works</h1>
+            <p class="mt-6 text-xl text-gray-600">From your first message to consistent sales in just 3 simple steps</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-20">
+            <div class="flex flex-col md:flex-row gap-10 items-center fade-in">
+                <div class="w-16 h-16 bg-[#1E3A8A] text-white rounded-3xl flex items-center justify-center text-4xl font-bold flex-shrink-0">01</div>
+                <div class="flex-1">
+                    <h3 class="text-3xl font-semibold mb-4">1. Free Store Audit</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Share your Instagram or social media page with us. We analyze your current setup and show you 
+                        exactly how much revenue you're losing and how we can fix it.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-10 items-center fade-in" style="transition-delay: 150ms;">
+                <div class="w-16 h-16 bg-[#1E3A8A] text-white rounded-3xl flex items-center justify-center text-4xl font-bold flex-shrink-0">02</div>
+                <div class="flex-1">
+                    <h3 class="text-3xl font-semibold mb-4">2. Pay & We Build</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Pay 50% deposit. We build your professional Shopify store, integrate Paystack/Flutterwave, 
+                        import your products, and fund the first year platform cost — usually ready in 5-7 days.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-10 items-center fade-in" style="transition-delay: 300ms;">
+                <div class="w-16 h-16 bg-[#1E3A8A] text-white rounded-3xl flex items-center justify-center text-4xl font-bold flex-shrink-0">03</div>
+                <div class="flex-1">
+                    <h3 class="text-3xl font-semibold mb-4">3. Launch & Scale</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        We launch your store, train you properly, hand over full access, and you start receiving real orders. 
+                        Add ongoing ads and social management anytime.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white py-8 text-center text-gray-600 text-sm">
+        <p>© 2026 StoreFlow NG • Port Harcourt, Nigeria</p>
+    </footer>
+
+    <script>
+        function handleScroll() {
+            document.querySelectorAll('.fade-in').forEach((el, i) => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+                    setTimeout(() => el.classList.add('visible'), i * 100);
+                }
+            });
+        }
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - StoreFlow NG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+   <!-- NAVBAR - Updated with Home Button -->
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="https://i.imgur.com/JaoDzQ1.png" 
+                 alt="StoreFlow NG Logo" 
+                 class="h-11 w-auto">
+            <span class="hidden sm:block heading-font text-2xl font-semibold text-[#1E3A8A]">StoreFlow NG</span>
+        </a>
+        
+        <div class="hidden md:flex gap-6 text-[#1E3A8A] font-medium">
+            <a href="index.html" class="hover:text-[#3B82F6] transition">Home</a>
+            <a href="services.html" class="hover:text-[#3B82F6] transition">Services</a>
+            <a href="pricing.html" class="hover:text-[#3B82F6] transition">Pricing</a>
+            <a href="how-it-works.html" class="hover:text-[#3B82F6] transition">How it Works</a>
+            <a href="faq.html" class="hover:text-[#3B82F6] transition">FAQ</a>
+        </div>
+        
+        <a href="https://wa.me/234YOURNUMBER?text=Hi%20StoreFlow%20NG%2C%20I%20need%20a%20free%20store%20audit" 
+           target="_blank"
+           class="bg-[#F97316] hover:bg-orange-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition">
+            💬 WhatsApp Us
+        </a>
+    </div>
+</nav>
+
+    <div class="max-w-4xl mx-auto px-5 py-20">
+        <div class="text-center mb-16 fade-in">
+            <h1 class="heading-font text-5xl md:text-6xl font-bold text-[#1E3A8A]">Frequently Asked Questions</h1>
+        </div>
+
+        <div class="space-y-6">
+            <div class="bg-white border rounded-3xl p-8 fade-in">
+                <h3 class="font-semibold text-xl mb-4">Do I need to pay for Shopify myself?</h3>
+                <p class="text-gray-600">No. We include and fully fund the first 12 months of Shopify in every package so you have zero platform cost at the beginning.</p>
+            </div>
+            
+            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 100ms;">
+                <h3 class="font-semibold text-xl mb-4">Can I pay in installments?</h3>
+                <p class="text-gray-600">Yes. We require 50% deposit to start building. The remaining 50% is due when your store is ready for launch.</p>
+            </div>
+            
+            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 200ms;">
+                <h3 class="font-semibold text-xl mb-4">How long does it take to build my store?</h3>
+                <p class="text-gray-600">Most stores are completed and launched within 5–7 working days after we receive your product information and 50% deposit.</p>
+            </div>
+            
+            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 300ms;">
+                <h3 class="font-semibold text-xl mb-4">Do you help with product photos and content?</h3>
+                <p class="text-gray-600">Yes. We create professional photos, descriptions, and reels using your raw images or guide you on what to provide.</p>
+            </div>
+            
+            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 400ms;">
+                <h3 class="font-semibold text-xl mb-4">What if I want ongoing ads and social media management?</h3>
+                <p class="text-gray-600">We offer monthly retainers after your store is live. Many clients start with the website and later add ads and content management.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white py-8 text-center text-gray-600 text-sm">
+        <p>© 2026 StoreFlow NG • Port Harcourt, Nigeria</p>
+    </footer>
+
+    <script>
+        function handleScroll() {
+            document.querySelectorAll('.fade-in').forEach((el, i) => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+                    setTimeout(() => el.classList.add('visible'), i * 80);
+                }
+            });
+        }
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
+</body>
+</html>
