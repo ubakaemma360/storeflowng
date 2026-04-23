@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - StoreFlow NG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .price-text { font-size: 2.1rem; line-height: 1.1; }
+        @media (max-width: 768px) { .price-text { font-size: 1.75rem; } }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgb(30 58 138 / 0.15); }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- NAVBAR -->
+    <!-- NAVBAR - Updated with Home Button -->
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="https://i.imgur.com/JaoDzQ1.png" 
+                 alt="StoreFlow NG Logo" 
+                 class="h-11 w-auto">
+            <span class="hidden sm:block heading-font text-2xl font-semibold text-[#1E3A8A]">StoreFlow NG</span>
+        </a>
+        
+        <div class="hidden md:flex gap-6 text-[#1E3A8A] font-medium">
+            <a href="index.html" class="hover:text-[#3B82F6] transition">Home</a>
+            <a href="services.html" class="hover:text-[#3B82F6] transition">Services</a>
+            <a href="pricing.html" class="hover:text-[#3B82F6] transition">Pricing</a>
+            <a href="how-it-works.html" class="hover:text-[#3B82F6] transition">How it Works</a>
+            <a href="faq.html" class="hover:text-[#3B82F6] transition">FAQ</a>
+        </div>
+        
+        <a href="https://wa.me/234YOURNUMBER?text=Hi%20StoreFlow%20NG%2C%20I%20need%20a%20free%20store%20audit" 
+           target="_blank"
+           class="bg-[#F97316] hover:bg-orange-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition">
+            💬 WhatsApp Us
+        </a>
+    </div>
+</nav>
+
+    <div class="max-w-7xl mx-auto px-5 py-16">
+        <div class="text-center mb-16 fade-in">
+            <h1 class="heading-font text-5xl md:text-6xl font-bold text-[#1E3A8A]">Choose Your Growth Plan</h1>
+            <p class="mt-4 text-xl text-gray-600 max-w-lg mx-auto">
+                One-time investment. Lifetime growth. All plans include first-year Shopify funding.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Starter -->
+            <div class="bg-white rounded-3xl p-8 border card-hover fade-in">
+                <h3 class="text-2xl font-semibold text-[#1E3A8A]">Starter</h3>
+                <div class="price-text font-bold text-[#1E3A8A] my-5">₦600,000</div>
+                <p class="text-sm text-gray-500 mb-8">Perfect for beginners testing the waters</p>
+                
+                <ul class="space-y-4 text-sm mb-10">
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Basic Shopify web store (up to 15 products)</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Paystack & Flutterwave integration</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Mobile optimization + social links</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> 1 month free maintenance & support</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Basic training on how to manage your store</li>
+                </ul>
+                
+                <button onclick="payWithPaystack(300000, 'Starter 50% Deposit')" 
+                        class="w-full py-4 bg-[#1E3A8A] text-white rounded-2xl font-semibold hover:bg-blue-800 transition">
+                    Pay 50% Deposit (₦300,000)
+                </button>
+            </div>
+
+            <!-- Standard -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-[#F97316] relative card-hover fade-in" style="transition-delay: 150ms;">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#F97316] text-white px-6 py-1 rounded-full text-xs font-bold">MOST POPULAR</div>
+                <h3 class="text-2xl font-semibold text-[#1E3A8A]">Standard</h3>
+                <div class="price-text font-bold text-[#1E3A8A] my-5">₦1,200,000</div>
+                <p class="text-sm text-gray-500 mb-8">Best choice for active sellers ready to grow</p>
+                
+                <ul class="space-y-4 text-sm mb-10">
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Everything in Starter</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Up to 40 products</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Professional product content (photos + descriptions)</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Instagram & Facebook shop sync + basic SEO</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> 3 months free maintenance & support</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Full handover training</li>
+                </ul>
+                
+                <button onclick="payWithPaystack(600000, 'Standard 50% Deposit')" 
+                        class="w-full py-4 bg-[#F97316] text-white rounded-2xl font-semibold hover:bg-orange-600 transition">
+                    Pay 50% Deposit (₦600,000)
+                </button>
+            </div>
+
+            <!-- Premium Growth -->
+            <div class="bg-white rounded-3xl p-8 border card-hover fade-in" style="transition-delay: 300ms;">
+                <h3 class="text-2xl font-semibold text-[#1E3A8A]">Premium Growth</h3>
+                <div class="price-text font-bold text-[#1E3A8A] my-5">₦2,000,000</div>
+                <p class="text-sm text-gray-500 mb-8">For serious sellers who want full scaling</p>
+                
+                <ul class="space-y-4 text-sm mb-10">
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Everything in Standard</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Advanced features (discounts, abandoned cart, analytics)</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Initial ads campaign setup & strategy</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Professional reels & marketing content</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> 6 months free maintenance</li>
+                    <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✓</span> Monthly strategy call with you</li>
+                </ul>
+                
+                <button onclick="payWithPaystack(1000000, 'Premium 50% Deposit')" 
+                        class="w-full py-4 bg-[#1E3A8A] text-white rounded-2xl font-semibold hover:bg-blue-800 transition">
+                    Pay 50% Deposit (₦1,000,000)
+                </button>
+            </div>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-16">
+            💡 50% deposit to begin • Balance due on launch • Recurring management available after delivery
+        </p>
+    </div>
+
+    <footer class="bg-white py-8 text-center text-gray-600 text-sm">
+        <p>© 2026 StoreFlow NG • Port Harcourt, Nigeria</p>
+    </footer>
+
+    <script>
+        function handleScroll() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+
+        function payWithPaystack(amount, packageName) {
+            const handler = PaystackPop.setup({
+                key: "pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",   // Replace with your real key
+                email: prompt("Enter your email:") || "customer@storeflow.ng",
+                amount: amount * 100,
+                currency: "NGN",
+                ref: "SF_" + Date.now(),
+                metadata: { package: packageName },
+                onSuccess: (response) => {
+                    alert(`🎉 Payment Successful!\nReference: ${response.reference}`);
+                    window.open(`https://wa.me/234YOURNUMBER?text=Hi%2C%20I%20just%20paid%20for%20${encodeURIComponent(packageName)}.%20Ref%3A%20${response.reference}`, "_blank");
+                }
+            });
+            handler.openIframe();
+        }
+    </script>
+</body>
+</html>

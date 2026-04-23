@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - StoreFlow NG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .card-hover:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgb(30 58 138 / 0.15); }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- NAVBAR -->
+    <!-- NAVBAR - Updated with Home Button -->
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="https://i.imgur.com/JaoDzQ1.png" 
+                 alt="StoreFlow NG Logo" 
+                 class="h-11 w-auto">
+            <span class="hidden sm:block heading-font text-2xl font-semibold text-[#1E3A8A]">StoreFlow NG</span>
+        </a>
+        
+        <div class="hidden md:flex gap-6 text-[#1E3A8A] font-medium">
+            <a href="index.html" class="hover:text-[#3B82F6] transition">Home</a>
+            <a href="services.html" class="hover:text-[#3B82F6] transition">Services</a>
+            <a href="pricing.html" class="hover:text-[#3B82F6] transition">Pricing</a>
+            <a href="how-it-works.html" class="hover:text-[#3B82F6] transition">How it Works</a>
+            <a href="faq.html" class="hover:text-[#3B82F6] transition">FAQ</a>
+        </div>
+        
+        <a href="https://wa.me/234YOURNUMBER?text=Hi%20StoreFlow%20NG%2C%20I%20need%20a%20free%20store%20audit" 
+           target="_blank"
+           class="bg-[#F97316] hover:bg-orange-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition">
+            💬 WhatsApp Us
+        </a>
+    </div>
+</nav>
+
+    <div class="max-w-7xl mx-auto px-5 py-16">
+        <div class="text-center mb-16">
+            <h1 class="heading-font text-5xl md:text-6xl font-bold text-[#1E3A8A] leading-tight fade-in">
+                Services That Actually Grow Your Business
+            </h1>
+            <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto fade-in" style="transition-delay: 200ms;">
+                We don't just build websites. We build complete systems that turn your social media followers into paying customers.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white border rounded-3xl p-8 card-hover fade-in">
+                <div class="text-6xl mb-6">🛒</div>
+                <h3 class="text-3xl font-semibold mb-4 text-[#1E3A8A]">Professional Web Stores</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Custom Shopify stores designed for Nigerian buyers. Secure Paystack & Flutterwave checkout, 
+                    Instagram/Facebook sync, mobile-first design, and abandoned cart recovery. 
+                    <strong>We even fund the first year.</strong>
+                </p>
+                <div class="mt-8 text-sm text-[#F97316] font-medium">Average sales increase: 2x–4x</div>
+            </div>
+
+            <div class="bg-white border rounded-3xl p-8 card-hover fade-in" style="transition-delay: 150ms;">
+                <div class="text-6xl mb-6">📸</div>
+                <h3 class="text-3xl font-semibold mb-4 text-[#1E3A8A]">Product Content Creation</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    High-converting photos, persuasive descriptions, pricing psychology, and short reels that make 
+                    your products stand out. We turn ordinary items into must-buy products.
+                </p>
+                <div class="mt-8 text-sm text-[#F97316] font-medium">Used by top Nigerian brands</div>
+            </div>
+
+            <div class="bg-white border rounded-3xl p-8 card-hover fade-in" style="transition-delay: 300ms;">
+                <div class="text-6xl mb-6">📣</div>
+                <h3 class="text-3xl font-semibold mb-4 text-[#1E3A8A]">Ads & Social Management</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Targeted Meta Ads that bring real buyers, consistent content calendar, daily posting, 
+                    audience engagement, and clear monthly reports showing your ROI.
+                </p>
+                <div class="mt-8 text-sm text-[#F97316] font-medium">Start from ₦50k ad budget</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white py-8 text-center text-gray-600 text-sm">
+        <p>© 2026 StoreFlow NG • Port Harcourt, Nigeria</p>
+    </footer>
+
+    <script>
+        function handleScroll() {
+            document.querySelectorAll('.fade-in').forEach((el, i) => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
+</body>
+</html>
