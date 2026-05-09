@@ -18,49 +18,40 @@
 <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
         <a href="index.html" class="flex items-center gap-3">
-            <img src="https://i.imgur.com/JaoDzQ1.png" 
-                 alt="StoreFlow NG Logo" 
-                 class="h-11 w-auto">
-            <span class="hidden sm:block heading-font text-2xl font-semibold text-[#1E3A8A]">StoreFlow NG</span>
+            <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG Logo" class="h-11 w-auto">
+            <span class="hidden sm:block heading-font font-bold text-xl text-[#1E3A8A]">StoreFlow NG</span>
         </a>
-        
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="md:hidden p-2 text-[#1E3A8A]" onclick="toggleMobileMenu()">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+
+        <div class="hidden md:flex items-center gap-8 text-gray-600 font-medium">
+            <a href="index.html" class="hover:text-[#F97316] transition-colors">Home</a>
+            <a href="services.html" class="hover:text-[#F97316] transition-colors">Services</a>
+            <a href="pricing.html" class="hover:text-[#F97316] transition-colors">Pricing</a>
+            <a href="how-it-works.html" class="hover:text-[#F97316] transition-colors">How It Works</a>
+            <a href="terms.html" class="hover:text-[#F97316] transition-colors">Terms</a>
+            
+            <button onclick="Tally.openPopup('681OaY')" 
+                    class="bg-[#1E3A8A] text-white px-6 py-3 rounded-2xl hover:bg-blue-800 transition-all shadow-md">
+                Start My 14-Day Build
+            </button>
+        </div>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden text-[#1E3A8A]">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
-        
-        <!-- Desktop Nav Links -->
-        <div class="hidden md:flex gap-6 text-[#1E3A8A] font-medium">
-            <a href="index.html" class="hover:text-[#3B82F6] transition">Home</a>
-            <a href="services.html" class="hover:text-[#3B82F6] transition">Services</a>
-            <a href="pricing.html" class="hover:text-[#3B82F6] transition">Pricing</a>
-            <a href="how-it-works.html" class="hover:text-[#3B82F6] transition">How it Works</a>
-            <a href="faq.html" class="hover:text-[#3B82F6] transition">FAQ</a>
-        </div>
-        
-        <a href="https://wa.me/2348127960825?text=Hi%20StoreFlow%20NG%2C%20I%20need%20a%20free%20store%20audit" 
-           target="_blank"
-           class="hidden md:inline-block bg-[#F97316] hover:bg-orange-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition">
-            💬 WhatsApp Us
-        </a>
     </div>
-    
-    <!-- Mobile Menu Dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-        <div class="px-5 py-4 flex flex-col gap-4">
-            <a href="index.html" class="text-[#1E3A8A] font-medium hover:text-[#3B82F6] transition">Home</a>
-            <a href="services.html" class="text-[#1E3A8A] font-medium hover:text-[#3B82F6] transition">Services</a>
-            <a href="pricing.html" class="text-[#1E3A8A] font-medium hover:text-[#3B82F6] transition">Pricing</a>
-            <a href="how-it-works.html" class="text-[#1E3A8A] font-medium hover:text-[#3B82F6] transition">How it Works</a>
-            <a href="faq.html" class="text-[#1E3A8A] font-medium hover:text-[#3B82F6] transition">FAQ</a>
-            <a href="https://wa.me/2348127960825?text=Hi%20StoreFlow%20NG%2C%20I%20need%20a%20free%20store%20audit" 
-               target="_blank"
-               class="bg-[#F97316] hover:bg-orange-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition text-center">
-                💬 WhatsApp Us
-            </a>
-        </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-5 py-6 space-y-4">
+        <a href="index.html" class="block text-lg font-medium text-gray-600">Home</a>
+        <a href="services.html" class="block text-lg font-medium text-gray-600">Services</a>
+        <a href="pricing.html" class="block text-lg font-medium text-gray-600">Pricing</a>
+        <a href="how-it-works.html" class="block text-lg font-medium text-gray-600">How It Works</a>
+        <a href="terms.html" class="block text-lg font-medium text-gray-600">Terms & Policies</a>
+        <button onclick="Tally.openPopup('681OaY')" 
+                class="w-full bg-[#1E3A8A] text-white py-4 rounded-2xl font-bold">
+            Start My 14-Day Build
+        </button>
     </div>
 </nav>
   <div class="max-w-4xl mx-auto space-y-16 py-12">
