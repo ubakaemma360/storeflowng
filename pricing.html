@@ -6,7 +6,9 @@
     <title>Pricing - StoreFlow NG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
-    
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+     <script>
+     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
@@ -83,7 +85,7 @@
                 <li class="flex items-center gap-3">✅ 20 Product Uploads</li>
             </ul>
             
-            <button onclick="payWithPaystack(600000, 'The Foundation')" 
+            <button onclick="initiatePayment(600000, 'The Foundation')" 
                     class="w-full py-4 bg-gray-100 text-[#1E3A8A] font-bold rounded-2xl hover:bg-[#1E3A8A] hover:text-white transition-all">
                 Select This Plan
             </button>
@@ -104,7 +106,7 @@
                 <li class="flex items-center gap-3">✅ Google Search Setup</li>
             </ul>
             
-            <button onclick="payWithPaystack(1200000, 'The Business')" 
+            <button onclick="initiatePayment(1200000, 'The Business')" 
                     class="w-full py-4 bg-[#F97316] text-white font-bold rounded-2xl hover:bg-orange-600 shadow-lg shadow-orange-200 transition-all">
                 Start Growing Now
             </button>
@@ -125,7 +127,7 @@
                 <li class="flex items-center gap-3">✅ 1 Month Support</li>
             </ul>
             
-            <button onclick="payWithPaystack(2000000, 'The Agency Elite')" 
+            <button onclick="initiatePayment(2000000, 'The Agency Elite')" 
                     class="w-full py-4 bg-gray-100 text-[#1E3A8A] font-bold rounded-2xl hover:bg-[#1E3A8A] hover:text-white transition-all">
                 Get Full Autopilot
             </button>
@@ -140,36 +142,58 @@
     </footer>
 
     <script>
-        function handleScroll() {
-            document.querySelectorAll('.fade-in').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
-                    el.classList.add('visible');
-                }
-            });
-        }
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', handleScroll);
-        
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
+  function initiatePayment(amount, packageName) {
+    // We ask the user for their preference to keep the UI clean
+    const choice = confirm("Press OK to pay with Paystack\nPress CANCEL to pay with Flutterwave");
 
-        function payWithPaystack(amount, packageName) {
-            const handler = PaystackPop.setup({
-                key: "pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",   // Replace with your real key
-                email: prompt("Enter your email:") || "customer@storeflow.ng",
-                amount: amount * 100,
-                currency: "NGN",
-                ref: "SF_" + Date.now(),
-                metadata: { package: packageName },
-                onSuccess: (response) => {
-                    alert(`🎉 Payment Successful!\nReference: ${response.reference}`);
-                    window.open(`https://wa.me/234YOURNUMBER?text=Hi%2C%20I%20just%20paid%20for%20${encodeURIComponent(packageName)}.%20Ref%3A%20${response.reference}`, "_blank");
-                }
-            });
-            handler.openIframe();
+    const userEmail = prompt("Confirm your email for the 14-day roadmap:") || "customer@storeflow.ng";
+
+    if (choice) {
+        payWithPaystack(amount, packageName, userEmail);
+    } else {
+        payWithFlutterwave(amount, packageName, userEmail);
+    }
+}
+
+function payWithPaystack(amount, packageName, email) {
+    const handler = PaystackPop.setup({
+        key: "YOUR_PAYSTACK_PUBLIC_KEY", // Replace with LIVE key
+        email: email,
+        amount: amount * 100,
+        currency: "NGN",
+        ref: "SF_PS_" + Date.now(),
+        metadata: { package: packageName },
+        onSuccess: (response) => {
+            handleSuccess('Paystack', response.reference, packageName);
         }
+    });
+    handler.openIframe();
+}
+
+function payWithFlutterwave(amount, packageName, email) {
+    FlutterwaveCheckout({
+        public_key: "YOUR_FLUTTERWAVE_PUBLIC_KEY", // Replace with LIVE key
+        tx_ref: "SF_FW_" + Date.now(),
+        amount: amount,
+        currency: "NGN",
+        payment_options: "card, banktransfer, ussd",
+        customer: { email: email, name: "StoreFlow Client" },
+        customizations: {
+            title: "StoreFlow NG",
+            description: "14-Day Transformation: " + packageName,
+            logo: "https://i.imgur.com/JaoDzQ1.png",
+        },
+        callback: function (data) {
+            handleSuccess('Flutterwave', data.transaction_id, packageName);
+        }
+    });
+}
+
+function handleSuccess(gateway, ref, packageName) {
+    alert(`🎉 Payment Successful via ${gateway}!`);
+    const message = `Hi StoreFlow! I just paid for the ${packageName} plan. Ref: ${ref}`;
+    window.location.href = `https://wa.me/2348127960825?text=${encodeURIComponent(message)}`;
+}
     </script>
 </body>
 </html>
