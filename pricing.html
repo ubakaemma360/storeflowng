@@ -6,194 +6,236 @@
     <title>Pricing - StoreFlow NG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
-<script src="https://checkout.flutterwave.com/v3.js"></script>
-     <script>
-     </script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
-        .price-text { font-size: 2.1rem; line-height: 1.1; }
-        @media (max-width: 768px) { .price-text { font-size: 1.75rem; } }
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgb(30 58 138 / 0.15); }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgb(30 58 138 / 0.15); transition: all 0.3s ease; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 font-['Inter']">
 
-    <!-- NAVBAR -->
-    <!-- NAVBAR - Updated with Home Button -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG Logo" class="h-11 w-auto">
-            <span class="hidden sm:block heading-font font-bold text-xl text-[#1E3A8A]">StoreFlow NG</span>
-        </a>
-
-        <div class="hidden md:flex items-center gap-8 text-gray-600 font-medium">
-            <a href="index.html" class="hover:text-[#F97316] transition-colors">Home</a>
-            <a href="services.html" class="hover:text-[#F97316] transition-colors">Services</a>
-            <a href="pricing.html" class="hover:text-[#F97316] transition-colors">Pricing</a>
-            <a href="how-it-works.html" class="hover:text-[#F97316] transition-colors">How It Works</a>
-            <a href="terms.html" class="hover:text-[#F97316] transition-colors">Terms</a>
-            
-            <button onclick="Tally.openPopup('681OaY')" 
-                    class="bg-[#1E3A8A] text-white px-6 py-3 rounded-2xl hover:bg-blue-800 transition-all shadow-md">
-                Start My 14-Day Build
-            </button>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG Logo" class="h-11 w-auto">
+                <span class="hidden sm:block heading-font font-bold text-xl text-[#1E3A8A]">StoreFlow NG</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-gray-600 font-medium text-sm">
+                <a href="index.html" class="hover:text-[#F97316]">Home</a>
+                <a href="services.html" class="hover:text-[#F97316]">Services</a>
+                <a href="pricing.html" class="text-[#F97316]">Pricing</a>
+                <a href="how-it-works.html" class="hover:text-[#F97316]">How It Works</a>
+                <a href="terms.html" class="hover:text-[#F97316]">Terms</a>
+                <button onclick="window.location.href='index.html#start'" class="bg-[#1E3A8A] text-white px-6 py-2.5 rounded-xl hover:bg-blue-800">Start Project</button>
+            </div>
         </div>
+    </nav>
 
-        <button onclick="toggleMobileMenu()" class="md:hidden text-[#1E3A8A]">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-        </button>
-    </div>
-
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-5 py-6 space-y-4">
-        <a href="index.html" class="block text-lg font-medium text-gray-600">Home</a>
-        <a href="services.html" class="block text-lg font-medium text-gray-600">Services</a>
-        <a href="pricing.html" class="block text-lg font-medium text-gray-600">Pricing</a>
-        <a href="how-it-works.html" class="block text-lg font-medium text-gray-600">How It Works</a>
-        <a href="terms.html" class="block text-lg font-medium text-gray-600">Terms & Policies</a>
-        <button onclick="Tally.openPopup('681OaY')" 
-                class="w-full bg-[#1E3A8A] text-white py-4 rounded-2xl font-bold">
-            Start My 14-Day Build
-        </button>
-    </div>
-</nav>
     <div class="max-w-7xl mx-auto px-5 py-20">
-    <div class="text-center mb-16 fade-in">
-        <h2 class="heading-font text-4xl md:text-5xl font-bold text-[#1E3A8A]">Simple Pricing. No Hidden Fees.</h2>
-        <p class="mt-4 text-xl text-gray-600 italic">Every plan comes with our 14-Day Transformation Guarantee.</p>
+        <div class="text-center mb-16 fade-in">
+            <h2 class="heading-font text-4xl md:text-5xl font-bold text-[#1E3A8A]">Simple Pricing. No Hidden Fees.</h2>
+            <p class="mt-4 text-xl text-gray-600 italic">Every plan comes with our 14-Day Transformation Guarantee.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <div class="bg-white border-2 border-gray-100 rounded-[2.5rem] p-10 card-hover fade-in relative overflow-hidden shadow-sm">
+                <span class="absolute top-4 right-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Stage 1</span>
+                <h3 class="text-2xl font-bold mb-2 text-[#1E3A8A]">The Foundation</h3>
+                <p class="text-gray-500 mb-6 text-sm leading-relaxed">Best for vendors just starting to automate.</p>
+                <div class="mb-8">
+                    <span class="text-4xl font-bold text-[#1E3A8A]">₦600,000</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-gray-600 text-sm">
+                    <li class="flex items-center gap-3">✅ 14-Day Professional Build</li>
+                    <li class="flex items-center gap-3">✅ Fast Mobile Storefront</li>
+                    <li class="flex items-center gap-3">✅ Payment Gateway Setup</li>
+                    <li class="flex items-center gap-3">✅ 20 Product Uploads</li>
+                </ul>
+                <button onclick="initiatePayment(600000, 'The Foundation')" 
+                        class="w-full py-4 bg-gray-100 text-[#1E3A8A] font-bold rounded-2xl hover:bg-[#1E3A8A] hover:text-white transition-all">
+                    Select This Plan
+                </button>
+            </div>
+
+            <div class="bg-white border-4 border-[#F97316] rounded-[2.5rem] p-10 card-hover fade-in relative shadow-xl transform scale-105" style="transition-delay: 150ms;">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 px-6 py-1 bg-[#F97316] text-white text-xs font-bold rounded-b-xl uppercase tracking-widest">Most Popular</div>
+                <h3 class="text-2xl font-bold mb-2 text-[#1E3A8A]">The Business</h3>
+                <p class="text-gray-500 mb-6 text-sm leading-relaxed">For brands ready to scale with content.</p>
+                <div class="mb-8">
+                    <span class="text-4xl font-bold text-[#1E3A8A]">₦1,200,000</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-gray-600 text-sm">
+                    <li class="flex items-center gap-3 font-semibold">✅ Everything in Foundation</li>
+                    <li class="flex items-center gap-3">✅ 50 Product Uploads</li>
+                    <li class="flex items-center gap-3">✅ 3 Viral Sales Reels</li>
+                    <li class="flex items-center gap-3">✅ Google Search Setup</li>
+                </ul>
+                <button onclick="initiatePayment(1200000, 'The Business')" 
+                        class="w-full py-4 bg-[#F97316] text-white font-bold rounded-2xl hover:bg-orange-600 shadow-lg shadow-orange-200 transition-all">
+                    Start Growing Now
+                </button>
+            </div>
+
+            <div class="bg-white border-2 border-gray-100 rounded-[2.5rem] p-10 card-hover fade-in relative shadow-sm" style="transition-delay: 300ms;">
+                <span class="absolute top-4 right-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Stage 3</span>
+                <h3 class="text-2xl font-bold mb-2 text-[#1E3A8A]">The Agency Elite</h3>
+                <p class="text-gray-500 mb-6 text-sm leading-relaxed">Full autopilot for established brands.</p>
+                <div class="mb-8">
+                    <span class="text-4xl font-bold text-[#1E3A8A]">₦2,000,000</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-gray-600 text-sm">
+                    <li class="flex items-center gap-3 font-semibold">✅ Everything in Business</li>
+                    <li class="flex items-center gap-3">✅ Unlimited Products</li>
+                    <li class="flex items-center gap-3">✅ Meta Ads Strategy</li>
+                    <li class="flex items-center gap-3">✅ 1 Month Priority Support</li>
+                </ul>
+                <button onclick="initiatePayment(2000000, 'The Agency Elite')" 
+                        class="w-full py-4 bg-gray-100 text-[#1E3A8A] font-bold rounded-2xl hover:bg-[#1E3A8A] hover:text-white transition-all">
+                    Get Full Autopilot
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-        
-        <div class="bg-white border-2 border-gray-100 rounded-[2.5rem] p-10 card-hover fade-in relative overflow-hidden shadow-sm">
-            <span class="absolute top-4 right-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Stage 1</span>
-            <h3 class="text-2xl font-bold mb-2 text-[#1E3A8A]">The Foundation</h3>
-            <p class="text-gray-500 mb-6 text-sm">Best for vendors just starting to automate.</p>
-            <div class="mb-8">
-                <span class="text-4xl font-bold text-[#1E3A8A]">₦600,000</span>
+    <footer class="bg-white py-12 border-t mt-20">
+        <div class="max-w-7xl mx-auto px-5 text-center">
+            <div class="flex justify-center items-center gap-3 mb-6">
+                <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG" class="h-8 w-auto grayscale opacity-70">
+                <span class="heading-font font-bold text-gray-400">StoreFlow NG</span>
             </div>
-            
-            <ul class="space-y-4 mb-10 text-gray-600">
-                <li class="flex items-center gap-3">✅ 14-Day Professional Build</li>
-                <li class="flex items-center gap-3">✅ Fast Mobile Storefront</li>
-                <li class="flex items-center gap-3">✅ Paystack Integration</li>
-                <li class="flex items-center gap-3">✅ 20 Product Uploads</li>
-            </ul>
-            
-            <button onclick="initiatePayment(600000, 'The Foundation')" 
-                    class="w-full py-4 bg-gray-100 text-[#1E3A8A] font-bold rounded-2xl hover:bg-[#1E3A8A] hover:text-white transition-all">
-                Select This Plan
-            </button>
-        </div>
-
-        <div class="bg-white border-4 border-[#F97316] rounded-[2.5rem] p-10 card-hover fade-in relative shadow-xl transform scale-105" style="transition-delay: 150ms;">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 px-6 py-1 bg-[#F97316] text-white text-xs font-bold rounded-b-xl uppercase tracking-widest">Most Popular</div>
-            <h3 class="text-2xl font-bold mb-2 text-[#1E3A8A]">The Business</h3>
-            <p class="text-gray-500 mb-6 text-sm">For brands ready to scale with content.</p>
-            <div class="mb-8">
-                <span class="text-4xl font-bold text-[#1E3A8A]">₦1,200,000</span>
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 text-sm text-gray-500">
+                <a href="index.html" class="hover:text-[#F97316]">Home</a>
+                <a href="terms.html" class="hover:text-[#F97316]">Terms</a>
+                <a href="faq.html" class="hover:text-[#F97316]">FAQ</a>
             </div>
-            
-            <ul class="space-y-4 mb-10 text-gray-600">
-                <li class="flex items-center gap-3 font-semibold">✅ Everything in Foundation</li>
-                <li class="flex items-center gap-3">✅ 50 Product Uploads</li>
-                <li class="flex items-center gap-3">✅ 3 Viral Sales Reels</li>
-                <li class="flex items-center gap-3">✅ Google Search Setup</li>
-            </ul>
-            
-            <button onclick="initiatePayment(1200000, 'The Business')" 
-                    class="w-full py-4 bg-[#F97316] text-white font-bold rounded-2xl hover:bg-orange-600 shadow-lg shadow-orange-200 transition-all">
-                Start Growing Now
-            </button>
+            <p class="text-gray-400 text-xs">© 2026 StoreFlow NG • Nigeria</p>
         </div>
-
-        <div class="bg-white border-2 border-gray-100 rounded-[2.5rem] p-10 card-hover fade-in relative shadow-sm" style="transition-delay: 300ms;">
-            <span class="absolute top-4 right-6 text-xs font-bold text-gray-400 uppercase tracking-widest">Stage 3</span>
-            <h3 class="text-2xl font-bold mb-2 text-[#1E3A8A]">The Agency Elite</h3>
-            <p class="text-gray-500 mb-6 text-sm">Full autopilot for established brands.</p>
-            <div class="mb-8">
-                <span class="text-4xl font-bold text-[#1E3A8A]">₦2,000,000</span>
-            </div>
-            
-            <ul class="space-y-4 mb-10 text-gray-600">
-                <li class="flex items-center gap-3 font-semibold">✅ Everything in Business</li>
-                <li class="flex items-center gap-3">✅ Unlimited Products</li>
-                <li class="flex items-center gap-3">✅ Meta Ads Strategy</li>
-                <li class="flex items-center gap-3">✅ 1 Month Support</li>
-            </ul>
-            
-            <button onclick="initiatePayment(2000000, 'The Agency Elite')" 
-                    class="w-full py-4 bg-gray-100 text-[#1E3A8A] font-bold rounded-2xl hover:bg-[#1E3A8A] hover:text-white transition-all">
-                Get Full Autopilot
-            </button>
-        </div>
-
-    </div>
-</div>
-
-    <footer class="bg-white py-8 text-center text-gray-600 text-sm">
-        <a href="terms.html" class="hover:text-[#F97316]">Terms & Policies</a>
-        <p>© 2026 StoreFlow NG • Nigeria</p>
     </footer>
 
     <script>
-  function initiatePayment(amount, packageName) {
-    // We ask the user for their preference to keep the UI clean
-    const choice = confirm("Press OK to pay with Paystack\nPress CANCEL to pay with Flutterwave");
-
-    const userEmail = prompt("Confirm your email for the 14-day roadmap:") || "customer@storeflow.ng";
-
-    if (choice) {
-        payWithPaystack(amount, packageName, userEmail);
-    } else {
-        payWithFlutterwave(amount, packageName, userEmail);
-    }
-}
-
-function payWithPaystack(amount, packageName, email) {
-    const handler = PaystackPop.setup({
-        key: "YOUR_PAYSTACK_PUBLIC_KEY", // Replace with LIVE key
-        email: email,
-        amount: amount * 100,
-        currency: "NGN",
-        ref: "SF_PS_" + Date.now(),
-        metadata: { package: packageName },
-        onSuccess: (response) => {
-            handleSuccess('Paystack', response.reference, packageName);
+        // Animations
+        function handleScroll() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
         }
-    });
-    handler.openIframe();
-}
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
 
-function payWithFlutterwave(amount, packageName, email) {
-    FlutterwaveCheckout({
-        public_key: "YOUR_FLUTTERWAVE_PUBLIC_KEY", // Replace with LIVE key
-        tx_ref: "SF_FW_" + Date.now(),
-        amount: amount,
-        currency: "NGN",
-        payment_options: "card, banktransfer, ussd",
-        customer: { email: email, name: "StoreFlow Client" },
-        customizations: {
-            title: "StoreFlow NG",
-            description: "14-Day Transformation: " + packageName,
-            logo: "https://i.imgur.com/JaoDzQ1.png",
-        },
-        callback: function (data) {
-            handleSuccess('Flutterwave', data.transaction_id, packageName);
+        // Payment Logic
+        function initiatePayment(amount, packageName) {
+            const method = confirm("Pay with Paystack (OK) or Flutterwave (Cancel)?");
+            const email = prompt("Enter your email for the project roadmap:") || "customer@storeflow.ng";
+
+            if (method) {
+                payWithPaystack(amount, packageName, email);
+            } else {
+                payWithFlutterwave(amount, packageName, email);
+            }
         }
-    });
-}
 
-function handleSuccess(gateway, ref, packageName) {
-    alert(`🎉 Payment Successful via ${gateway}!`);
-    const message = `Hi StoreFlow! I just paid for the ${packageName} plan. Ref: ${ref}`;
-    window.location.href = `https://wa.me/2348127960825?text=${encodeURIComponent(message)}`;
-}
+        function payWithPaystack(amount, packageName, email) {
+            const handler = PaystackPop.setup({
+                key: "YOUR_PAYSTACK_PUBLIC_KEY", 
+                email: email,
+                amount: amount * 100,
+                currency: "NGN",
+                onSuccess: (res) => handleSuccess('Paystack', res.reference, packageName)
+            });
+            handler.openIframe();
+        }
+
+        function payWithFlutterwave(amount, packageName, email) {
+            FlutterwaveCheckout({
+                public_key: "YOUR_FLUTTERWAVE_PUBLIC_KEY",
+                tx_ref: "SF_" + Date.now(),
+                amount: amount,
+                currency: "NGN",
+                customer: { email: email },
+                callback: (data) => handleSuccess('Flutterwave', data.transaction_id, packageName)
+            });
+        }
+
+        function handleSuccess(gateway, ref, plan) {
+            window.location.href = `https://wa.me/2348127960825?text=Hi!%20I%20just%20paid%20for%20the%20${encodeURIComponent(plan)}%20via%20${gateway}.%20Ref:%20${ref}`;
+        }
     </script>
+    <div id="paymentModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl transform transition-all scale-95 opacity-0" id="modalContent">
+        <div class="text-center">
+            <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-[#1E3A8A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+            </div>
+            <h3 class="heading-font text-2xl font-bold text-[#1E3A8A] mb-2">Secure Checkout</h3>
+            <p class="text-gray-500 mb-8">Choose your preferred payment gateway to begin your 14-day transformation.</p>
+            
+            <div class="space-y-4">
+                <button id="paystackBtn" class="w-full py-4 px-6 bg-[#09A5DB]/10 border-2 border-[#09A5DB] text-[#09A5DB] font-bold rounded-2xl flex items-center justify-between hover:bg-[#09A5DB] hover:text-white transition-all group">
+                    <span>Pay with Paystack</span>
+                    <span class="text-xs bg-white/20 px-2 py-1 rounded">Fastest</span>
+                </button>
+
+                <button id="flutterwaveBtn" class="w-full py-4 px-6 bg-[#F97316]/10 border-2 border-[#F97316] text-[#F97316] font-bold rounded-2xl flex items-center justify-between hover:bg-[#F97316] hover:text-white transition-all">
+                    <span>Pay with Flutterwave</span>
+                    <span class="text-xs bg-white/20 px-2 py-1 rounded">Reliable</span>
+                </button>
+
+                <button onclick="closePaymentModal()" class="mt-4 text-gray-400 text-sm hover:text-gray-600 underline">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+let currentAmount = 0;
+let currentPackage = "";
+
+function initiatePayment(amount, packageName) {
+    // Store data for the actual payment call later
+    currentAmount = amount;
+    currentPackage = packageName;
+
+    // Show the modal with a smooth animation
+    const modal = document.getElementById('paymentModal');
+    const content = document.getElementById('modalContent');
+    
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+    }, 10);
+}
+
+function closePaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    const content = document.getElementById('modalContent');
+    
+    content.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300);
+}
+
+// Event Listeners for the new buttons
+document.getElementById('paystackBtn').onclick = function() {
+    closePaymentModal();
+    const email = prompt("Enter email for your 14-day roadmap:") || "customer@storeflow.ng";
+    payWithPaystack(currentAmount, currentPackage, email);
+};
+
+document.getElementById('flutterwaveBtn').onclick = function() {
+    closePaymentModal();
+    const email = prompt("Enter email for your 14-day roadmap:") || "customer@storeflow.ng";
+    payWithFlutterwave(currentAmount, currentPackage, email);
+};
+</script>
 </body>
 </html>
