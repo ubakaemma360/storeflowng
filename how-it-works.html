@@ -11,6 +11,7 @@
         .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
+    <script src="https://tally.so/widgets/embed.js"></script>
 </head>
 <body class="bg-gray-50">
 
@@ -29,10 +30,14 @@
             <a href="how-it-works.html" class="hover:text-[#F97316] transition-colors">How It Works</a>
             <a href="terms.html" class="hover:text-[#F97316] transition-colors">Terms</a>
             
-            <button onclick="Tally.openPopup('681OaY')" 
-                    class="bg-[#1E3A8A] text-white px-6 py-3 rounded-2xl hover:bg-blue-800 transition-all shadow-md">
-                Start My 14-Day Build
-            </button>
+           <button 
+  data-tally-open="681OaY" 
+  data-tally-layout="modal" 
+  data-tally-emoji-text="🚀" 
+  data-tally-emoji-animation="wave"
+  class="bg-[#1E3A8A] text-white px-6 py-3 rounded-2xl hover:bg-blue-800 transition-all shadow-md">
+    Start My 14-Day Build
+</button>
         </div>
 
         <button onclick="toggleMobileMenu()" class="md:hidden text-[#1E3A8A]">
