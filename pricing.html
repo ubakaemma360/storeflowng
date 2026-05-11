@@ -143,7 +143,7 @@
 
         function payWithPaystack(amount, packageName, email) {
             const handler = PaystackPop.setup({
-                key: "YOUR_PAYSTACK_PUBLIC_KEY", 
+                key: "pk_live_b132a299813bc3c1c006e2972669aeab4b17ac03", 
                 email: email,
                 amount: amount * 100,
                 currency: "NGN",
@@ -154,7 +154,7 @@
 
         function payWithFlutterwave(amount, packageName, email) {
             FlutterwaveCheckout({
-                public_key: "YOUR_FLUTTERWAVE_PUBLIC_KEY",
+                public_key: "FLWPUBK-b7d8c2eb233a8a52c99c16063c915074-X",
                 tx_ref: "SF_" + Date.now(),
                 amount: amount,
                 currency: "NGN",
