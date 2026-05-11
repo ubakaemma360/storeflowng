@@ -12,14 +12,40 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-['Inter']">
 
-    <nav class="bg-white border-b py-6">
-        <div class="max-w-4xl mx-auto px-5 flex justify-between items-center">
-            <a href="index.html" class="font-bold text-[#1E3A8A] flex items-center gap-2">
-                <img src="https://i.imgur.com/JaoDzQ1.png" class="h-8"> StoreFlow NG
-            </a>
-            <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-[#F97316]">Back to Home</a>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG Logo" class="h-11 w-auto">
+            <span class="hidden sm:block heading-font font-bold text-xl text-[#1E3A8A]">StoreFlow NG</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-gray-600 font-medium text-sm">
+            <a href="index.html" class="hover:text-[#F97316]">Home</a>
+            <a href="services.html" class="hover:text-[#F97316]">Services</a>
+            <a href="pricing.html" class="hover:text-[#F97316]">Pricing</a>
+            <a href="how-it-works.html" class="hover:text-[#F97316]">How It Works</a>
+            <button data-tally-open="681OaY" data-tally-layout="overlay" data-tally-width="400" class="bg-[#1E3A8A] text-white px-6 py-2.5 rounded-xl hover:bg-blue-800 transition-all">
+                Start 14-Day Build
+            </button>
         </div>
-    </nav>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden text-[#1E3A8A]">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-5 space-y-4 shadow-xl">
+        <a href="index.html" class="block py-2 text-gray-600 font-medium">Home</a>
+        <a href="services.html" class="block py-2 text-gray-600 font-medium">Services</a>
+        <a href="pricing.html" class="block py-2 text-gray-600 font-medium">Pricing</a>
+        <a href="how-it-works.html" class="block py-2 text-gray-600 font-medium">How It Works</a>
+        <button data-tally-open="681OaY" data-tally-layout="overlay" data-tally-width="400" class="w-full bg-[#1E3A8A] text-white py-4 rounded-2xl font-bold">
+            Start 14-Day Build
+        </button>
+    </div>
+</nav>
 
     <header class="py-16 bg-white border-b">
         <div class="max-w-4xl mx-auto px-5">
@@ -153,6 +179,11 @@
         </div>
     </div>
 </footer>
-
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+</script>
 </body>
 </html>
