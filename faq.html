@@ -15,7 +15,7 @@
 </head>
 <body class="bg-gray-50">
 
-   <!-- NAVBAR - Updated with Home Button -->
+    <!-- NAVBAR - Updated with Home Button -->
 <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
         <a href="index.html" class="flex items-center gap-3">
@@ -23,18 +23,22 @@
             <span class="hidden sm:block heading-font font-bold text-xl text-[#1E3A8A]">StoreFlow NG</span>
         </a>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-5 space-y-4 shadow-xl">
-    <a href="index.html" class="block py-2 text-gray-600 font-medium">Home</a>
-    <a href="services.html" class="block py-2 text-gray-600 font-medium">Services</a>
-    <a href="pricing.html" class="block py-2 text-gray-600 font-medium">Pricing</a>
-    <a href="how-it-works.html" class="block py-2 text-gray-600 font-medium">How It Works</a>
-    <a href="faq.html" class="block py-2 text-gray-600 font-medium">FAQ</a>
-    <a href="terms.html" class="block py-2 text-[#F97316] font-semibold">Terms & Policies</a>
-    
-    <button data-tally-open="681OaY" data-tally-layout="overlay" data-tally-width="400" class="w-full bg-[#1E3A8A] text-white py-4 rounded-2xl font-bold">
-        Start 14-Day Build
-    </button>
-</div>>
+        <div class="hidden md:flex items-center gap-8 text-gray-600 font-medium">
+            <a href="index.html" class="hover:text-[#F97316] transition-colors">Home</a>
+            <a href="services.html" class="hover:text-[#F97316] transition-colors">Services</a>
+            <a href="pricing.html" class="hover:text-[#F97316] transition-colors">Pricing</a>
+            <a href="how-it-works.html" class="hover:text-[#F97316] transition-colors">How It Works</a>
+            <a href="terms.html" class="hover:text-[#F97316] transition-colors">Terms</a>
+            
+           <button 
+  data-tally-open="681OaY" 
+  data-tally-layout="modal" 
+  data-tally-emoji-text="🚀" 
+  data-tally-emoji-animation="wave"
+  class="bg-[#1E3A8A] text-white px-6 py-3 rounded-2xl hover:bg-blue-800 transition-all shadow-md">
+    Start My 14-Day Build
+</button>
+        </div>
 
         <button onclick="toggleMobileMenu()" class="md:hidden text-[#1E3A8A]">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,13 +47,15 @@
         </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-5 space-y-4 shadow-xl">
-        <a href="index.html" class="block py-2 text-gray-600 font-medium">Home</a>
-        <a href="services.html" class="block py-2 text-gray-600 font-medium">Services</a>
-        <a href="pricing.html" class="block py-2 text-gray-600 font-medium">Pricing</a>
-        <a href="how-it-works.html" class="block py-2 text-gray-600 font-medium">How It Works</a>
-        <button data-tally-open="681OaY" data-tally-layout="overlay" data-tally-width="400" class="w-full bg-[#1E3A8A] text-white py-4 rounded-2xl font-bold">
-            Start 14-Day Build
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-5 py-6 space-y-4">
+        <a href="index.html" class="block text-lg font-medium text-gray-600">Home</a>
+        <a href="services.html" class="block text-lg font-medium text-gray-600">Services</a>
+        <a href="pricing.html" class="block text-lg font-medium text-gray-600">Pricing</a>
+        <a href="how-it-works.html" class="block text-lg font-medium text-gray-600">How It Works</a>
+        <a href="terms.html" class="block text-lg font-medium text-gray-600">Terms & Policies</a>
+        <button onclick="Tally.openPopup('681OaY')" 
+                class="w-full bg-[#1E3A8A] text-white py-4 rounded-2xl font-bold">
+            Start My 14-Day Build
         </button>
     </div>
 </nav>
