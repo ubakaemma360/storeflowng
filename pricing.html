@@ -279,7 +279,7 @@
         closePaymentModal();
         
         let handler = PaystackPop.setup({
-            key: 'pk_test_5a9b525844d21446e5b47f58df6c4cf511cc3c21' , // REPLACE THIS
+            key: 'pk_live_b132a299813bc3c1c006e2972669aeab4b17ac03' , // REPLACE THIS
             email: email,
             amount: finalAmountToPay * 100, // Paystack uses Kobo
             currency: 'NGN',
@@ -302,7 +302,7 @@
         closePaymentModal();
 
         FlutterwaveCheckout({
-            public_key: "FLWPUBK_TEST-23bb61ba31d2ffc9934c0f366d1fa8f8-X", // REPLACE THIS
+            public_key: "FLWPUBK-b7d8c2eb233a8a52c99c16063c915074-X", // REPLACE THIS
             tx_ref: "SF_" + Math.floor((Math.random() * 1000000000) + 1),
             amount: finalAmountToPay,
             currency: "NGN",
