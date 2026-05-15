@@ -210,83 +210,116 @@
     </div>
 </footer>
 
-    <script>
-        let baseAmount = 0;
-        let finalAmountToPay = 0;
-        let currentPackage = "";
+   <script>
+    let baseAmount = 0;
+    let finalAmountToPay = 0;
+    let currentPackage = "";
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if(menu) menu.classList.toggle('hidden');
+    }
+
+    function initiatePayment(amount, packageName, allowInstallment) {
+        baseAmount = amount;
+        finalAmountToPay = amount;
+        currentPackage = packageName;
+        
+        document.getElementById('modalPackageName').innerText = packageName;
+        const installmentBox = document.getElementById('installmentOptions');
+        
+        if (allowInstallment) {
+            installmentBox.classList.remove('hidden');
+            setPaymentType('full');
+        } else {
+            installmentBox.classList.add('hidden');
+            updateDisplayAmounts(amount);
         }
 
-        function initiatePayment(amount, packageName, allowInstallment) {
-            baseAmount = amount;
-            finalAmountToPay = amount;
-            currentPackage = packageName;
-            
-            document.getElementById('modalPackageName').innerText = packageName;
-            const installmentBox = document.getElementById('installmentOptions');
-            
-            if (allowInstallment) {
-                installmentBox.classList.remove('hidden');
-                setPaymentType('full');
-            } else {
-                installmentBox.classList.add('hidden');
-                updateDisplayAmounts(amount);
-            }
+        const modal = document.getElementById('paymentModal');
+        const content = document.getElementById('modalContent');
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            content.classList.remove('scale-95', 'opacity-0');
+            content.classList.add('scale-100', 'opacity-100');
+        }, 10);
+    }
 
-            const modal = document.getElementById('paymentModal');
-            const content = document.getElementById('modalContent');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
-                content.classList.add('scale-100', 'opacity-100');
-            }, 10);
+    function setPaymentType(type) {
+        const fullBtn = document.getElementById('fullPayBtn');
+        const partBtn = document.getElementById('partPayBtn');
+        if (type === 'part') {
+            finalAmountToPay = baseAmount / 2;
+            partBtn.className = "py-3 border-2 border-[#1E3A8A] rounded-xl text-sm font-bold bg-[#1E3A8A] text-white";
+            fullBtn.className = "py-3 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-500";
+        } else {
+            finalAmountToPay = baseAmount;
+            fullBtn.className = "py-3 border-2 border-[#1E3A8A] rounded-xl text-sm font-bold bg-[#1E3A8A] text-white";
+            partBtn.className = "py-3 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-500";
         }
+        updateDisplayAmounts(finalAmountToPay);
+    }
 
-        function setPaymentType(type) {
-            const fullBtn = document.getElementById('fullPayBtn');
-            const partBtn = document.getElementById('partPayBtn');
-            if (type === 'part') {
-                finalAmountToPay = baseAmount / 2;
-                partBtn.className = "py-3 border-2 border-[#1E3A8A] rounded-xl text-sm font-bold bg-[#1E3A8A] text-white";
-                fullBtn.className = "py-3 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-500";
-            } else {
-                finalAmountToPay = baseAmount;
-                fullBtn.className = "py-3 border-2 border-[#1E3A8A] rounded-xl text-sm font-bold bg-[#1E3A8A] text-white";
-                partBtn.className = "py-3 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-500";
-            }
-            updateDisplayAmounts(finalAmountToPay);
-        }
+    function updateDisplayAmounts(amt) {
+        const formatted = "₦" + amt.toLocaleString();
+        document.getElementById('displayAmountStack').innerText = formatted;
+        document.getElementById('displayAmountFlutter').innerText = formatted;
+    }
 
-        function updateDisplayAmounts(amt) {
-            const formatted = "₦" + amt.toLocaleString();
-            document.getElementById('displayAmountStack').innerText = formatted;
-            document.getElementById('displayAmountFlutter').innerText = formatted;
-        }
+    function closePaymentModal() {
+        const modal = document.getElementById('paymentModal');
+        const content = document.getElementById('modalContent');
+        content.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => modal.classList.add('hidden'), 300);
+    }
 
-        function closePaymentModal() {
-            const modal = document.getElementById('paymentModal');
-            const content = document.getElementById('modalContent');
-            content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
+    // --- PAYSTACK INTEGRATION ---
+    document.getElementById('paystackFinal').onclick = function() {
+        const email = prompt("Enter email for your project roadmap:") || "client@storeflow.ng";
+        closePaymentModal();
+        
+        let handler = PaystackPop.setup({
+            key: 'pk_test_5a9b525844d21446e5b47f58df6c4cf511cc3c21' , // REPLACE THIS
+            email: email,
+            amount: finalAmountToPay * 100, // Paystack uses Kobo
+            currency: 'NGN',
+            ref: 'SF_' + Math.floor((Math.random() * 1000000000) + 1),
+            metadata: {
+                custom_fields: [{ display_name: "Package", variable_name: "package", value: currentPackage }]
+            },
+            callback: function(response) {
+                alert('Payment successful! Reference: ' + response.reference);
+                window.location.href = "success.html"; 
+            },
+            onClose: function() { alert('Transaction cancelled.'); }
+        });
+        handler.openIframe();
+    };
 
-        // Connect Final Gateway Buttons
-        document.getElementById('paystackFinal').onclick = function() {
-            closePaymentModal();
-            const email = prompt("Enter email for your roadmap:") || "client@storeflow.ng";
-            // Replace with your existing Paystack function
-            alert("Redirecting to Paystack for " + finalAmountToPay);
-        };
+    // --- FLUTTERWAVE INTEGRATION ---
+    document.getElementById('flutterwaveFinal').onclick = function() {
+        const email = prompt("Enter email for your project roadmap:") || "client@storeflow.ng";
+        closePaymentModal();
 
-        document.getElementById('flutterwaveFinal').onclick = function() {
-            closePaymentModal();
-            const email = prompt("Enter email for your roadmap:") || "client@storeflow.ng";
-            // Replace with your existing Flutterwave function
-            alert("Redirecting to Flutterwave for " + finalAmountToPay);
-        };
-    </script>
+        FlutterwaveCheckout({
+            public_key: "FLWPUBK_TEST-23bb61ba31d2ffc9934c0f366d1fa8f8-X", // REPLACE THIS
+            tx_ref: "SF_" + Math.floor((Math.random() * 1000000000) + 1),
+            amount: finalAmountToPay,
+            currency: "NGN",
+            payment_options: "card, banktransfer, ussd",
+            customer: { email: email },
+            customizations: {
+                title: "StoreFlow NG",
+                description: "Payment for " + currentPackage,
+                logo: "https://i.imgur.com/JaoDzQ1.png",
+            },
+            callback: function(data) {
+                alert("Payment successful!");
+                window.location.href = "success.html";
+            },
+            onclose: function() { alert("Transaction cancelled."); }
+        });
+    };
+</script>
 </body>
 </html>
