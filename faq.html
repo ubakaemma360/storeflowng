@@ -3,190 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - StoreFlow NG</title>
+    <title>FAQ • StoreFlow NG</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/JaoDzQ1.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
-        .heading-font { font-family: 'Space Grotesk', sans-serif; }
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-    </style>
-    <script src="https://tally.so/widgets/embed.js"></script>
-</head>
-<body class="bg-gray-50">
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script>
+        window.TallyConfig = {
+            "formId": "681OaY",
+            "popup": {
+                "emoji": { "text": "👋", "animation": "wave" },
+                "open": { "trigger": "time", "ms": 4000 },
+                "hideTitle": true,
+                "overlay": true,
+                "doNotShowAfterSubmit": true,
+                "formEventsForwarding": true,
+                "autoClose": 10000
+            }
+        };
+    </script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
 
-    <!-- NAVBAR - Updated with Home Button -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG Logo" class="h-11 w-auto">
-            <span class="hidden sm:block heading-font font-bold text-xl text-[#1E3A8A]">StoreFlow NG</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #1E3A8A;
+            --navy-dark: #162d6e;
+            --orange: #F97316;
+            --orange-dark: #ea6c0a;
+            --white: #FFFFFF;
+            --off-white: #F8F9FC;
+            --gray-text: #6B7280;
+            --gray-light: #F1F3F9;
+            --border: #E5E8F0;
+            --success: #10B981;
+            --danger: #EF4444;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--off-white);
+            color: #111827;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .display-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* ── NAV (identical to index) ── */
+        .nav-link {
+            position: relative;
+            color: #4B5563;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 2px;
+            background: var(--orange);
+            border-radius: 2px;
+            transition: width 0.25s ease;
+        }
+        .nav-link:hover { color: var(--navy); }
+        .nav-link:hover::after { width: 100%; }
+
+        .btn-primary {
+            background: var(--navy);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            border-radius: 14px;
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            display: inline-flex; align-items: center; gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--navy-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(30,58,138,0.25);
+        }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(30,58,138,0.07);
+            border: 1px solid rgba(30,58,138,0.12);
+            border-radius: 100px;
+            padding: 5px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--navy);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        /* ── FAQ CARD (same as service/policy cards) ── */
+        .faq-card {
+            background: var(--white);
+            border: 1.5px solid var(--border);
+            border-radius: 24px;
+            padding: 28px 32px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .faq-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--navy), var(--orange));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+        .faq-card:hover {
+            border-color: rgba(30,58,138,0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 48px rgba(30,58,138,0.08);
+        }
+        .faq-card:hover::before { transform: scaleX(1); }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .faq-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 12px;
+            background: rgba(30,58,138,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        /* ── ANIMATIONS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── FOOTER (identical to index) ── */
+        .footer-link {
+            color: #6B7280;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .footer-link:hover { color: var(--orange); }
+
+        /* ── MOBILE MENU ── */
+        #mobile-menu { display: none; }
+        #mobile-menu.open { display: block; }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVBAR (identical to index.html)
+═══════════════════════════════════════ -->
+<nav style="background:#fff; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px; height:72px; display:flex; align-items:center; justify-content:space-between;">
+
+        <a href="index.html" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+            <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG" style="height:40px; width:auto;">
+            <span class="display-font" style="font-weight:800; font-size:1.1rem; color:var(--navy);">StoreFlow NG</span>
         </a>
 
-        <div class="hidden md:flex items-center gap-8 text-gray-600 font-medium">
-            <a href="index.html" class="hover:text-[#F97316] transition-colors">Home</a>
-            <a href="services.html" class="hover:text-[#F97316] transition-colors">Services</a>
-            <a href="pricing.html" class="hover:text-[#F97316] transition-colors">Pricing</a>
-            <a href="how-it-works.html" class="hover:text-[#F97316] transition-colors">How It Works</a>
-            <a href="terms.html" class="hover:text-[#F97316] transition-colors">Terms</a>
-            
-           <button 
-  data-tally-open="681OaY" 
-  data-tally-layout="modal" 
-  data-tally-emoji-text="🚀" 
-  data-tally-emoji-animation="wave"
-  class="bg-[#1E3A8A] text-white px-6 py-3 rounded-2xl hover:bg-blue-800 transition-all shadow-md">
-    Start My 14-Day Build
-</button>
+        <div style="display:flex; align-items:center; gap:36px;" class="desktop-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
+            <a href="how-it-works.html" class="nav-link">How It Works</a>
+            <a href="terms.html" class="nav-link">Terms</a>
+            <button
+                data-tally-open="681OaY"
+                data-tally-layout="modal"
+                data-tally-emoji-text="🚀"
+                data-tally-emoji-animation="wave"
+                class="btn-primary"
+                style="border:none; cursor:pointer;">
+                Start My 14-Day Build
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </button>
         </div>
 
-        <button onclick="toggleMobileMenu()" class="md:hidden text-[#1E3A8A]">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
+        <button onclick="toggleMenu()" style="display:none; background:none; border:none; cursor:pointer; color:var(--navy); padding:8px;" id="hamburger">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-5 py-6 space-y-4">
-        <a href="index.html" class="block text-lg font-medium text-gray-600">Home</a>
-        <a href="services.html" class="block text-lg font-medium text-gray-600">Services</a>
-        <a href="pricing.html" class="block text-lg font-medium text-gray-600">Pricing</a>
-        <a href="how-it-works.html" class="block text-lg font-medium text-gray-600">How It Works</a>
-        <a href="terms.html" class="block text-lg font-medium text-gray-600">Terms & Policies</a>
-        <button onclick="Tally.openPopup('681OaY')" 
-                class="w-full bg-[#1E3A8A] text-white py-4 rounded-2xl font-bold">
-            Start My 14-Day Build
-        </button>
+    <div id="mobile-menu" style="background:#fff; border-top:1px solid var(--border); padding:20px 24px;">
+        <div style="display:flex; flex-direction:column; gap:4px;">
+            <a href="index.html" style="padding:12px 0; color:#374151; font-weight:500; text-decoration:none; border-bottom:1px solid var(--border);">Home</a>
+            <a href="services.html" style="padding:12px 0; color:#374151; font-weight:500; text-decoration:none; border-bottom:1px solid var(--border);">Services</a>
+            <a href="pricing.html" style="padding:12px 0; color:#374151; font-weight:500; text-decoration:none; border-bottom:1px solid var(--border);">Pricing</a>
+            <a href="how-it-works.html" style="padding:12px 0; color:#374151; font-weight:500; text-decoration:none; border-bottom:1px solid var(--border);">How It Works</a>
+            <a href="terms.html" style="padding:12px 0; color:#374151; font-weight:500; text-decoration:none; border-bottom:1px solid var(--border);">Terms & Policies</a>
+            <button onclick="Tally.openPopup('681OaY')" style="margin-top:16px; width:100%; background:var(--navy); color:#fff; border:none; border-radius:14px; padding:16px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:1rem; cursor:pointer;">
+                Start My 14-Day Build
+            </button>
+        </div>
     </div>
 </nav>
 
-    <div class="max-w-4xl mx-auto px-5 py-20">
-        <div class="text-center mb-16 fade-in">
-            <h1 class="heading-font text-5xl md:text-6xl font-bold text-[#1E3A8A]">Frequently Asked Questions</h1>
+
+<!-- ═══════════════════════════════════════
+     FAQ CONTENT (card-based)
+═══════════════════════════════════════ -->
+<section style="padding:96px 24px; background:var(--off-white);">
+    <div style="max-width:900px; margin:0 auto;">
+        <div style="text-align:center; margin-bottom:56px;">
+            <div class="section-label fade-up">Got Questions?</div>
+            <h1 class="display-font fade-up" style="font-size:clamp(2.4rem, 5vw, 3.6rem); font-weight:800; color:var(--navy); margin:0 0 16px; letter-spacing:-0.02em; transition-delay:0.05s;">
+                Frequently Asked Questions
+            </h1>
+            <p class="fade-up" style="color:var(--gray-text); font-size:1rem; max-width:500px; margin:0 auto; line-height:1.7; transition-delay:0.1s;">
+                Everything you need to know about working with StoreFlow NG.
+            </p>
         </div>
 
-        <div class="space-y-6">
-            <div class="bg-white border rounded-3xl p-8 fade-in">
-                <h3 class="font-semibold text-xl mb-4">Do I need to pay for Shopify myself?</h3>
-                <p class="text-gray-600">No. We include and fully fund the first 12 months of Shopify in every package so you have zero platform cost at the beginning.</p>
-            </div>
+        <div style="display:flex; flex-direction:column; gap:20px;">
             
-            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 100ms;">
-                <h3 class="font-semibold text-xl mb-4">Can I pay in installments?</h3>
-                <p class="text-gray-600">Yes. We require 50% deposit to start building. The remaining 50% is due when your store is ready for launch.</p>
-            </div>
-            
-            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 200ms;">
-                <h3 class="font-semibold text-xl mb-4">How long does it take to build my store?</h3>
-                <p class="text-gray-600">Most stores are completed and launched within 7–14 working days after we receive your product information and 50% deposit.</p>
-            </div>
-            
-            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 300ms;">
-                <h3 class="font-semibold text-xl mb-4">Do you help with product photos and content?</h3>
-                <p class="text-gray-600">Yes. We create professional photos, descriptions, and reels using your raw images or guide you on what to provide.</p>
-            </div>
-            
-            <div class="bg-white border rounded-3xl p-8 fade-in" style="transition-delay: 400ms;">
-                <h3 class="font-semibold text-xl mb-4">What if I want ongoing ads and social media management?</h3>
-                <p class="text-gray-600">We offer monthly retainers after your store is live. Many clients start with the website and later add ads and content management.</p>
-            </div>
-        </div>
-    </div>
-
-        <footer class="bg-white pt-20 pb-10 border-t border-gray-100 mt-20">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            
-            <div class="col-span-1 md:col-span-1">
-                <a href="index.html" class="flex items-center gap-3 mb-6">
-                    <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG" class="h-10 w-auto">
-                    <span class="heading-font font-bold text-xl text-[#1E3A8A]">StoreFlow NG</span>
-                </a>
-                <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                    We turn Instagram shops into automated sales machines in 14 days. No tech skills required.
+            <!-- FAQ 1 -->
+            <div class="faq-card fade-up" style="transition-delay:0.05s;">
+                <div class="faq-question">
+                    <div class="faq-icon">?</div>
+                    <h3 class="display-font" style="font-size:1.2rem; font-weight:700; color:var(--navy); margin:0;">Do I need to pay for Shopify myself?</h3>
+                </div>
+                <p style="color:var(--gray-text); line-height:1.7; font-size:0.95rem; margin:0;">
+                    No. We include and fully fund the first 12 months of Shopify in every package — so you have zero platform cost at the beginning.
                 </p>
             </div>
 
+            <!-- FAQ 2 -->
+            <div class="faq-card fade-up" style="transition-delay:0.1s;">
+                <div class="faq-question">
+                    <div class="faq-icon">?</div>
+                    <h3 class="display-font" style="font-size:1.2rem; font-weight:700; color:var(--navy); margin:0;">Can I pay in installments?</h3>
+                </div>
+                <p style="color:var(--gray-text); line-height:1.7; font-size:0.95rem; margin:0;">
+                    Yes. We require a 50% deposit to start building your store. The remaining 50% is due when your store is ready for launch.
+                </p>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-card fade-up" style="transition-delay:0.15s;">
+                <div class="faq-question">
+                    <div class="faq-icon">?</div>
+                    <h3 class="display-font" style="font-size:1.2rem; font-weight:700; color:var(--navy); margin:0;">How long does it take to build my store?</h3>
+                </div>
+                <p style="color:var(--gray-text); line-height:1.7; font-size:0.95rem; margin:0;">
+                    Most stores are completed and launched within <strong>7–14 working days</strong> after we receive your product information and 50% deposit.
+                </p>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-card fade-up" style="transition-delay:0.2s;">
+                <div class="faq-question">
+                    <div class="faq-icon">?</div>
+                    <h3 class="display-font" style="font-size:1.2rem; font-weight:700; color:var(--navy); margin:0;">Do you help with product photos and content?</h3>
+                </div>
+                <p style="color:var(--gray-text); line-height:1.7; font-size:0.95rem; margin:0;">
+                    Yes. We create professional photos, descriptions, and Reels using your raw images — or guide you on what to provide for the best results.
+                </p>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-card fade-up" style="transition-delay:0.25s;">
+                <div class="faq-question">
+                    <div class="faq-icon">?</div>
+                    <h3 class="display-font" style="font-size:1.2rem; font-weight:700; color:var(--navy); margin:0;">What if I want ongoing ads and social media management?</h3>
+                </div>
+                <p style="color:var(--gray-text); line-height:1.7; font-size:0.95rem; margin:0;">
+                    We offer monthly retainers after your store is live. Many clients start with the website and later add ads + content management as they scale.
+                </p>
+            </div>
+
+            <!-- FAQ 6 (extra common question) -->
+            <div class="faq-card fade-up" style="transition-delay:0.3s;">
+                <div class="faq-question">
+                    <div class="faq-icon">?</div>
+                    <h3 class="display-font" style="font-size:1.2rem; font-weight:700; color:var(--navy); margin:0;">Do I own the website after completion?</h3>
+                </div>
+                <p style="color:var(--gray-text); line-height:1.7; font-size:0.95rem; margin:0;">
+                    Absolutely. Upon final payment, full ownership of the website design and custom code is transferred to you. We only keep the right to showcase your project in our portfolio.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="fade-up" style="text-align:center; margin-top:56px;">
+            <button onclick="bookFreeAudit()" class="hero-cta-primary" style="background:var(--orange); color:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; border-radius:16px; padding:16px 32px; font-size:1rem; transition:all 0.2s; display:inline-flex; align-items:center; gap:10px; border:none; cursor:pointer;">
+                Still have questions? Chat with us →
+            </button>
+            <p style="margin-top:16px; font-size:0.8rem; color:var(--gray-text);">Our team responds within 1 hour on WhatsApp</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER (identical to index.html)
+═══════════════════════════════════════ -->
+<footer style="background:var(--white); border-top:1px solid var(--border); padding:64px 24px 32px;">
+    <div style="max-width:1200px; margin:0 auto;">
+        <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; margin-bottom:56px;" class="footer-grid">
+
             <div>
-                <h4 class="font-bold text-[#1E3A8A] mb-6 uppercase text-xs tracking-widest">Solutions</h4>
-                <ul class="space-y-4 text-sm text-gray-600">
-                    <li><a href="services.html" class="hover:text-[#F97316] transition-colors">Our Services</a></li>
-                    <li><a href="pricing.html" class="hover:text-[#F97316] transition-colors">Pricing Plans</a></li>
-                    <li><a href="how-it-works.html" class="hover:text-[#F97316] transition-colors">14-Day Roadmap</a></li>
-                    <li><a href="faq.html" class="hover:text-[#F97316] transition-colors">FAQs</a></li>
+                <a href="index.html" style="display:flex; align-items:center; gap:12px; text-decoration:none; margin-bottom:20px;">
+                    <img src="https://i.imgur.com/JaoDzQ1.png" alt="StoreFlow NG" style="height:36px; width:auto;">
+                    <span class="display-font" style="font-weight:800; font-size:1.05rem; color:var(--navy);">StoreFlow NG</span>
+                </a>
+                <p style="color:var(--gray-text); font-size:0.88rem; line-height:1.75; margin:0 0 24px; max-width:240px;">
+                    We turn Instagram shops into automated sales machines in 14 days. No tech skills required.
+                </p>
+                <div style="display:flex; gap:12px;">
+                    <a href="https://instagram.com/storeflowng" target="_blank" style="width:36px; height:36px; border-radius:10px; background:var(--off-white); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+                        <svg width="16" height="16" fill="var(--orange)" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://wa.me/2348127960825" target="_blank" style="width:36px; height:36px; border-radius:10px; background:var(--off-white); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; transition:all 0.2s;" onmouseover="this.style.borderColor='#25D366'" onmouseout="this.style.borderColor='var(--border)'">
+                        <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="display-font" style="font-size:0.75rem; font-weight:700; color:var(--navy); letter-spacing:0.08em; text-transform:uppercase; margin:0 0 20px;">Solutions</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+                    <li><a href="services.html" class="footer-link">Our Services</a></li>
+                    <li><a href="pricing.html" class="footer-link">Pricing Plans</a></li>
+                    <li><a href="how-it-works.html" class="footer-link">14-Day Roadmap</a></li>
+                    <li><a href="faq.html" class="footer-link">FAQs</a></li>
                 </ul>
             </div>
 
-           <div>
-    <h4 class="font-bold text-[#1E3A8A] mb-6 uppercase text-xs tracking-widest">Support</h4>
-    <ul class="space-y-4 text-sm text-gray-600">
-        <li class="flex items-center gap-3">
-            <span class="text-[#F97316]">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </span>
-            <a href="https://wa.me/2348127960825" target="_blank" class="hover:text-[#F97316] transition-colors">WhatsApp Support</a>
-        </li>
-        <li class="flex items-center gap-3">
-            <span class="text-[#F97316]">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </span>
-            <a href="https://instagram.com/storeflowng" target="_blank" class="hover:text-[#F97316] transition-colors">@storeflowng</a>
-        </li>
-        <li class="flex items-center gap-3">
-            <span class="text-[#F97316]">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            </span>
-            <a href="mailto:storeflowng@gmail.com?subject=Support%20Request%20-%20StoreFlow%20NG" class="hover:text-[#F97316]">storeflowng@gmail.com</a>
-        </li>
-    </ul>
-</div>
+            <div>
+                <h4 class="display-font" style="font-size:0.75rem; font-weight:700; color:var(--navy); letter-spacing:0.08em; text-transform:uppercase; margin:0 0 20px;">Support</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+                    <li><a href="https://wa.me/2348127960825" target="_blank" class="footer-link" style="display:flex; align-items:center; gap:8px;">
+                        <svg width="14" height="14" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp Support
+                    </a></li>
+                    <li><a href="https://instagram.com/storeflowng" target="_blank" class="footer-link">@storeflowng</a></li>
+                    <li><a href="mailto:storeflowng@gmail.com?subject=Support%20Request%20-%20StoreFlow%20NG" class="footer-link">storeflowng@gmail.com</a></li>
+                </ul>
+            </div>
 
             <div>
-                <h4 class="font-bold text-[#1E3A8A] mb-6 uppercase text-xs tracking-widest">Compliance</h4>
-                <ul class="space-y-4 text-sm text-gray-600">
-                    <li><a href="terms.html" class="hover:text-[#F97316] transition-colors">Terms of Service</a></li>
-                    <li><a href="terms.html#refunds" class="hover:text-[#F97316] transition-colors">Refund Policy</a></li>
-                    <li class="pt-2">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                            <span class="text-[10px] font-bold uppercase text-gray-400">Secure Payments Enabled</span>
-                        </div>
+                <h4 class="display-font" style="font-size:0.75rem; font-weight:700; color:var(--navy); letter-spacing:0.08em; text-transform:uppercase; margin:0 0 20px;">Compliance</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+                    <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+                    <li><a href="terms.html#refunds" class="footer-link">Refund Policy</a></li>
+                    <li style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+                        <span style="width:8px; height:8px; border-radius:50%; background:var(--success); display:block;"></span>
+                        <span style="font-size:0.75rem; color:var(--gray-text); font-weight:500;">Secure Payments Enabled</span>
                     </li>
                 </ul>
             </div>
+
         </div>
 
-        <div class="border-t border-gray-100 pt-10 flex flex-col md:row justify-between items-center gap-6">
-            <p class="text-gray-400 text-xs">
-                © 2026 StoreFlow NG. All rights reserved. Registered Digital Solutions Agency.
-            </p>
-            <div class="flex items-center gap-6">
-                <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest">Powered by Flutterwave & Paystack</span>
-            </div>
+        <div style="border-top:1px solid var(--border); padding-top:28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <p style="color:#9CA3AF; font-size:0.8rem; margin:0;">© 2026 StoreFlow NG. All rights reserved. Registered Digital Solutions Agency.</p>
+            <span style="font-size:0.75rem; color:#D1D5DB; font-weight:500; letter-spacing:0.04em;">Powered by Flutterwave & Paystack</span>
         </div>
     </div>
 </footer>
 
-    <script>
-        function handleScroll() {
-            document.querySelectorAll('.fade-in').forEach((el, i) => {
-                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
-                    setTimeout(() => el.classList.add('visible'), i * 80);
-                }
-            });
+<script>
+    // ── Scroll animations
+    function handleScroll() {
+        document.querySelectorAll('.fade-up').forEach(el => {
+            if (el.getBoundingClientRect().top <= window.innerHeight * 0.88) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('load', handleScroll);
+
+    // ── Mobile menu
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('open');
+    }
+
+    function handleResize() {
+        const desktopNav = document.querySelector('.desktop-nav');
+        const hamburger = document.getElementById('hamburger');
+        if (window.innerWidth < 768) {
+            desktopNav.style.display = 'none';
+            hamburger.style.display = 'block';
+        } else {
+            desktopNav.style.display = 'flex';
+            hamburger.style.display = 'none';
+            document.getElementById('mobile-menu').classList.remove('open');
         }
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', handleScroll);
-        
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    // Responsive footer grid
+    function handleGrids() {
+        const footerGrid = document.querySelector('.footer-grid');
+        if (window.innerWidth < 768 && footerGrid) {
+            footerGrid.style.gridTemplateColumns = '1fr 1fr';
+        } else if (window.innerWidth < 500 && footerGrid) {
+            footerGrid.style.gridTemplateColumns = '1fr';
+        } else if (footerGrid) {
+            footerGrid.style.gridTemplateColumns = '1.6fr 1fr 1fr 1fr';
         }
-        function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    // This toggles the 'hidden' class on and off
-    menu.classList.toggle('hidden');
-}
-    </script>
+    }
+    window.addEventListener('resize', handleGrids);
+    handleGrids();
+
+    function bookFreeAudit() {
+        window.open("https://wa.me/2348127960825?text=Hi%20StoreFlow%20NG%2C%20I%20have%20a%20quick%20question%20about%20your%20services%20%F0%9F%99%8F", "_blank");
+    }
+</script>
+
 </body>
 </html>
