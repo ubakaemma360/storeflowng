@@ -373,7 +373,7 @@
         #mobile-menu { display: none; }
         #mobile-menu.open { display: block; }
 
-        /* ===== NEW SLIDER STYLES (added only) ===== */
+        /* ===== SLIDER STYLES ===== */
         .comparison-slider {
             position: relative;
             width: 100%;
@@ -455,22 +455,6 @@
         @media (min-width: 769px) {
             .floating-mobile-grid { display: none; }
         }
-        /* Placeholder image styles (you replace these with real images) */
-        .before-image-placeholder, .after-image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #f8fafc;
-            color: #1e293b;
-            font-family: monospace;
-            text-align: center;
-            padding: 20px;
-        }
-        .before-image-placeholder { background: #fff5f0; }
-        .after-image-placeholder { background: #f0fdf4; }
     </style>
 </head>
 <body>
@@ -509,7 +493,7 @@
 </nav>
 
 <!-- ═══════════════════════════════════════
-     HERO (unchanged except slider insertion)
+     HERO (with slider inserted)
 ═══════════════════════════════════════ -->
 <header class="hero-section" style="padding:88px 24px 96px;">
     <div style="max-width:780px; margin:0 auto; text-align:center; position:relative; z-index:1;">
@@ -523,25 +507,23 @@
         </div>
 
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- 🆕 NEW BEFORE/AFTER SLIDER (inserted exactly here)           -->
+        <!-- 🆕 BEFORE/AFTER SLIDER with your real images                   -->
         <!-- ═══════════════════════════════════════════════════════════ -->
         <div class="fade-up" style="margin-top: 48px; margin-bottom: 48px; transition-delay:0.24s;">
             <div style="max-width:900px; margin:0 auto; background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border-radius: 32px; border: 1px solid rgba(255,255,255,0.2); padding: 20px; box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);">
                 <div class="comparison-slider" id="beforeAfterSlider">
-                   <!-- AFTER side -->
-<div class="slider-after">
-  <img src="https://i.imgur.com/wqjAELu.png" 
-       alt="After StoreFlow: Professional Shopify store" 
-       style="width:100%; height:100%; object-fit:cover;"
-       onerror="this.onerror=null; this.src=''; this.alt='⚠️ Replace with direct image URL'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.background='#f0fdf4'; this.style.color='#1e3a8a'; this.style.fontSize='14px'; this.innerHTML='⚠️ Direct image URL needed. Right-click your Imgur image → Copy image address.';">
-</div>
-                    <!-- BEFORE side -->
-<div class="slider-before" id="beforeDiv">
-  <img src="https://i.imgur.com/zRYt2qt.jpeg" 
-       alt="Before StoreFlow: Instagram DM chaos" 
-       style="width:100%; height:100%; object-fit:cover;"
-       onerror="this.onerror=null; this.src=''; this.alt='⚠️ Replace with direct image URL'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.background='#fff5f0'; this.style.color='#1e3a8a'; this.style.fontSize='14px'; this.innerHTML='⚠️ Direct image URL needed. Right-click your Imgur image → Copy image address.';">
-</div>
+                    <!-- AFTER side (z-index 1) -->
+                    <div class="slider-after">
+                        <img src="https://i.imgur.com/wqjAELu.png" 
+                             alt="After StoreFlow: Professional Shopify store" 
+                             style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <!-- BEFORE side (sliding overlay) -->
+                    <div class="slider-before" id="beforeDiv">
+                        <img src="https://i.imgur.com/zRYt2qt.jpeg" 
+                             alt="Before StoreFlow: Instagram DM chaos" 
+                             style="width:100%; height:100%; object-fit:cover;">
+                    </div>
                     <!-- Draggable handle -->
                     <div class="slider-handle pulse-glow" id="sliderHandle">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/><path d="m9 10 2 2-2 2"/><path d="m15 10-2 2 2 2"/></svg>
@@ -571,7 +553,7 @@
             </div>
         </div>
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- END OF SLIDER — original trust indicators follow below         -->
+        <!-- END OF SLIDER                                               -->
         <!-- ═══════════════════════════════════════════════════════════ -->
 
         <div class="fade-up" style="display:flex; flex-wrap:wrap; justify-content:center; gap:28px; margin-top:8px; transition-delay:0.3s;">
@@ -709,7 +691,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════
-     TESTIMONIALS (full original, shortened for brevity but identical)
+     TESTIMONIALS (original, shortened but intact)
 ═══════════════════════════════════════ -->
 <section style="padding:96px 24px; background:var(--white);">
     <div style="max-width:1200px; margin:0 auto;">
@@ -811,7 +793,7 @@
         window.open("https://wa.me/2348127960825?text=Hi%20StoreFlow%20NG%2C%20I%20want%20a%20FREE%20store%20audit%20%F0%9F%9A%80", "_blank");
     }
 
-    // ===== SLIDER FUNCTIONALITY (added only) =====
+    // ===== SLIDER FUNCTIONALITY =====
     const slider = document.getElementById('beforeAfterSlider');
     const beforeDiv = document.getElementById('beforeDiv');
     const handle = document.getElementById('sliderHandle');
